@@ -12,10 +12,17 @@ export default (err, req, res, next) => {
       error: err,
     });
   } else if (config.NODE_ENV == "prod") {
-    console.log(err);
-    res.status(err.statusCode).json({
-      status: err.status,
-      message: err.message,
-    });
+    if (err.isOperational) {
+      res.status(err.statusCode).json({
+        status: err.status,
+        message: err.message,
+      });
+    }else {
+      console.error(err);
+      res.status(500).json({
+        status: 'error',
+        message: 'something went wrong!'
+      })
+    }
   }
 };
