@@ -10,7 +10,8 @@
     "dev": "nodemon server.js",
     "devDB:create": "npx db-migrate db:create task_manager_dev",
     "devDB:drop": "npx db-migrate db:drop task_manager_dev",
-    "migration:run": "npx db-migrate up"
+    "__comment__" : "to run `migration:run` script modify `type` from `module` to `commonjs`",
+    "migration:run": "npx db-migrate up" 
   },
   "repository": {
     "type": "git",
