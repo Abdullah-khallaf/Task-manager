@@ -11,5 +11,5 @@ export const getAllUsers = catchAsync(async (req, res, next) => {
         data: {
             users
         }
-    })
+    })  
 })
