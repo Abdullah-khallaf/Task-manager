@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/Abdullah-khallaf/Task-manager#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "connect-redis": "^7.1.0",
     "db-migrate": "^0.11.13",
     "db-migrate-mysql": "^2.2.0",

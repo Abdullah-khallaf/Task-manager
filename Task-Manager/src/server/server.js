@@ -36,16 +36,17 @@ redisClient
       console.log(err);
     }
   });
-
-// middleware
 const cookieConfig = {
   secure: false,
   httpOnly: true,
-  maxAge: 1000 * 60, // 1min
+  maxAge: 1000 * 60 * 5, // 5min
 };
 if (config.env === "prod") {
   cookieConfig.secure = true;
 }
+
+// middleware
+app.use(express.json());
 app.use(
   session({
     store: new RedisStore({ client: redisClient }),
@@ -55,7 +56,6 @@ app.use(
     cookie: cookieConfig,
   })
 );
-app.use(express.json());
 if (config.NODE_ENV == "dev" || config.env == "test") {
   app.use(morgan("dev"));
 }
