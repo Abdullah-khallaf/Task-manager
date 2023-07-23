@@ -20,22 +20,19 @@ const app = express();
 
 //config redis
 const redisClient = createClient({
-  host: config.REDIS_HOST,
-  port: config.REDIS_PORT,
+  HOST: config.REDIS_HOST,
+  PORT: config.REDIS_PORT,
 });
 
-redisClient
-  .connect(() => {
-    if (config.env == "dev" || config.env == "test") {
-      console.log("connected to redis");
-    }
+await redisClient
+  .connect()
+  .then(() => {
+    console.log("connected to redis");
   })
-  .catch((err) => {
-    if (config.env == "dev" || config.env == "test") {
-      console.log("failed to connect to redis");
-      console.log(err);
-    }
+  .catch(() => {
+    console.log("failed to connect to redis");
   });
+
 const cookieConfig = {
   secure: false,
   httpOnly: true,

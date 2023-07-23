@@ -25,3 +25,7 @@ export default (err, req, res, next) => {
     }
   }
 };
+
+/*
+  - Duplicate entry ->  "sqlState": "23000"
+*/

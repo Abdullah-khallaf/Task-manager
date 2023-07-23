@@ -25,14 +25,24 @@ export const deleteAll = catchAsync(async (req, res, next) => {
 });
 
 export const signup = catchAsync(async (req, res, next) => {
-  const insertId = await userService.signup(req.body);
+  const user = await userService.signup(req.body);
 
   res.status(201).json({
     status: "success",
     data: {
-      user: {
-        id: insertId,
-      },
+      user,
+    },
+  });
+});
+
+export const login = catchAsync(async (req, res, next) => {
+  const user = await userService.login(req.body);
+  req.session.user = user;
+  
+  res.status(200).json({
+    status: "success",
+    data: {
+      user,
     },
   });
 });
