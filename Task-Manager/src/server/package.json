@@ -10,13 +10,13 @@
     "dev": "nodemon server.js",
     "devDB:create": "npx db-migrate db:create task_manager_dev",
     "devDB:drop": "npx db-migrate db:drop task_manager_dev",
-    "__comment__" : "to run `migration:run` script modify `type` from `module` to `commonjs`",
-    "migration:run": "npx db-migrate up" 
+    "__comment__": "to run `migration:run` script modify `type` from `module` to `commonjs`",
+    "migration:run": "npx db-migrate up"
   },
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/Abdullah-khallaf/Task-manager.git"
-  },  
+  },
   "keywords": [
     "todo"
   ],
@@ -27,11 +27,14 @@
   },
   "homepage": "https://github.com/Abdullah-khallaf/Task-manager#readme",
   "dependencies": {
+    "connect-redis": "^7.1.0",
     "db-migrate": "^0.11.13",
     "db-migrate-mysql": "^2.2.0",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
-    "mysql2": "^3.5.2"
+    "express-session": "^1.17.3",
+    "mysql2": "^3.5.2",
+    "redis": "^4.6.7"
   },
   "devDependencies": {
     "morgan": "^1.10.0"
