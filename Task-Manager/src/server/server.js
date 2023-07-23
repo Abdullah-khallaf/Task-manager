@@ -11,6 +11,7 @@ import morgan from "morgan";
 import globalErrorHandler from "./middleware/globalErrorHandler.js";
 import userRoutes from './api/resources/user/user.routes.js'
 import taskRoutes from './api/resources/task/task.routes.js'
+import AppError from "./utils/appError.js";
 
 
 const app = express();
@@ -25,13 +26,10 @@ app.use(globalErrorHandler)
 //routes
 app.use('/api/v1/user', userRoutes)
 app.use('/api/v1/task', taskRoutes)
-
-app.use(globalErrorHandler)
-
-//handling unhandled rejections
-process.on('unhandledRejection', () => {
-
+app.all('*', (req, res, next) => {
+    next(new AppError(`Can't find ${req.originalUrl} on this server`, 404));
 })
+app.use(globalErrorHandler)
 
 //start server
 const PORT =  config.PORT || 8080 
