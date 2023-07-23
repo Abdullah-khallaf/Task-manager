@@ -1,4 +1,4 @@
-// handling uncaught exception
+// handling uncaught exceptions
 process.on('uncaughtException', (err) => {
     console.log(`name: ${err.name}, message: ${err.message}`);
     console.log(('uncaughtException, shutting down'));
@@ -10,6 +10,8 @@ import config from './config/config.js'
 import morgan from "morgan";
 import globalErrorHandler from "./middleware/globalErrorHandler.js";
 import userRoutes from './api/resources/user/user.routes.js'
+import taskRoutes from './api/resources/task/task.routes.js'
+
 
 const app = express();
 
@@ -22,11 +24,16 @@ app.use(globalErrorHandler)
 
 //routes
 app.use('/api/v1/user', userRoutes)
+app.use('/api/v1/task', taskRoutes)
 
+app.use(globalErrorHandler)
+
+//handling unhandled rejections
 process.on('unhandledRejection', () => {
 
 })
 
+//start server
 const PORT =  config.PORT || 8080 
 app.listen(8080,() => {
     console.log(`app is listening on port ${PORT}`);

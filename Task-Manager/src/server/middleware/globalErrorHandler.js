@@ -1,4 +1,3 @@
-import AppError from "../utils/appError.js";
 import config from "../config/config.js";
 
 export default (err, req, res, next) => {
@@ -9,7 +8,7 @@ export default (err, req, res, next) => {
     res.status(err.statusCode).json({
       status: err.status,
       message: err.message,
-      error: err,
+      error: err, 
     });
   } else if (config.NODE_ENV == "prod") {
     if (err.isOperational) {
