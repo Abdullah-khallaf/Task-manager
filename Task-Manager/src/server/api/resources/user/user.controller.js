@@ -38,7 +38,7 @@ export const signup = catchAsync(async (req, res, next) => {
 export const login = catchAsync(async (req, res, next) => {
   const user = await userService.login(req.body);
   req.session.user = user;
-  
+
   res.status(200).json({
     status: "success",
     data: {
@@ -46,3 +46,15 @@ export const login = catchAsync(async (req, res, next) => {
     },
   });
 });
+
+export const logout = catchAsync(async (req, res, next) => {
+  req.session.destroy()
+
+  res.status(200).json({
+      status: 'success',
+      message: 'you are logged out '
+  })
+})
+
+
+

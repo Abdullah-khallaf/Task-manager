@@ -1,5 +1,6 @@
 import { Router } from "express";
-import { getAllUsers, deleteAll, signup, login } from "./user.controller.js";
+import { getAllUsers, deleteAll, signup, login, logout } from "./user.controller.js";
+import {isLoggedIn, restrictTo} from './user.middleware.js'
 
 const router = new Router();
 
