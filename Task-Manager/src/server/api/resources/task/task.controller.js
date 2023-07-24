@@ -2,16 +2,54 @@ import catchAsync from "../../../utils/catchAsync.js";
 import * as taskService from "./task.service.js";
 
 export const create = catchAsync(async (req, res, next) => {
-  const { name } = req.body;
-  const id = await taskService.create(name);
+  const task = await taskService.create(req.body, req.session.user.id);
 
   res.status(201).json({
     status: "success",
     data: {
-      task: {
-        id,
-        name,
-      },
+      task,
     },
+  });
+});
+
+export const getAll = catchAsync(async (req, res, next) => {
+  const tasks = await taskService.getAll(req.session.user.id);
+
+  res.status(200).json({
+    status: "success",
+    data: {
+      tasks,
+    },
+  });
+});
+
+export const deleteAll = catchAsync(async (req, res, next) => {
+  const NumOfDeletedTasks = await taskService.deleteAll(req.session.user.id);
+
+  res.status(200).json({
+    status: "success",
+    message: `${NumOfDeletedTasks} tasks is deleted`,
+  });
+});
+
+export const update = catchAsync(async (req, res, next) => {
+  const affectedRows = await taskService.update(req.body, req.session.user.id);
+
+  res.status(200).json({
+    status: "success",
+    message: `${affectedRows} task is updated`,
+  });
+});
+
+export const deleteTask = catchAsync(async (req, res, next) => {
+  const affectedRows = await taskService.deleteTask(
+    req.body,
+    req.session.user.id
+  );
+
+  res.status(204).json({
+    status: "success",
+    data: null,
+    //  message: `${affectedRows} task is deleted`,
   });
 });
