@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="file:///C:/Users/Saif/crud/Static/style.css">
+    <title>Crud</title>
+    <header>THIS IS A CRUD APP</header>
+</head>
+<body>
+    
+    <table>
+        <thead>
+            <th>id</th>
+            <th>name</th>
+            <th>email</th>
+        </thead>
+        <tbody>
+            
+            {% for employee in employees%} 
+            <tr>
+                <td>{{employee.id}}</td>
+                <td>{{employee.name}}</td>
+                <td>{{employee.email}}</td>
+                <td>
+                    <form action="" method="post">
+                        <input type="hidden" > 
+                        <input type="hidden" name='id' value="{{employee.id}}" > 
+                        <button type="submit" name="action" value="delete">Delete</button>
+                    </form>
+                </td>
+                <td>
+                    <form action="" method="post">
+                        <input type="hidden" name="id" value="{{employee.id}}"> 
+                        <input type="text"  name = "name"value="{{employee.name}}" placeholder="name"> 
+                        <input type="text"  name = "email" value="{{employee.email}}" placeholder="email"> 
+                        <button type="submit" name="action" value="update">Update</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %} 
+            <tr>
+                <td>
+                    {% set i %}
+                    {% for i in employee %}
+                    {{employee.id+1}}
+                    {% endfor %}
+                    {% endset %}
+                    
+                </td>
+                <td>
+                <form action="" method="post">
+                        <input type="text" placeholder="name" autofocus="on" name="name">
+                 </td>
+                 <td>
+                    
+                        <input type="text" placeholder="email" name="email">
+                        <button type="submit" name="action" value="add">enter</button>
+                </form>
+                   
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
