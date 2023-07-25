@@ -9,8 +9,7 @@ import express from "express";
 import config from "./config/config.js";
 import morgan from "morgan";
 import globalErrorHandler from "./middleware/globalErrorHandler.js";
-import userRoutes from "./api/resources/user/user.routes.js";
-import taskRoutes from "./api/resources/task/task.routes.js";
+import restRouter from "./api/api.routes.js";
 import AppError from "./utils/appError.js";
 import session from "express-session";
 import { createClient } from "redis";
@@ -58,11 +57,12 @@ if (config.NODE_ENV == "dev" || config.env == "test") {
 }
 
 //routes
-app.use("/api/v1/user", userRoutes);
-app.use("/api/v1/task", taskRoutes);
+app.use("/api", restRouter);
 app.all("*", (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server`, 404));
 });
+
+//globale error handler
 app.use(globalErrorHandler);
 
 //start server
