@@ -41,6 +41,10 @@ export const deleteAll = async (userId) => {
   return affectedRows;
 };
 
+/*
+  todo: 
+    -make update service to return an updated row
+*/
 export const update = async ({ id, name }, userId) => {
   const db = await connect();
   const sql = `

@@ -62,12 +62,12 @@ app.all("*", (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server`, 404));
 });
 
-//globale error handler
+//global error handler
 app.use(globalErrorHandler);
 
 //start server
 const PORT = config.PORT || 8080;
-app.listen(8080, () => {
+const server = app.listen(8080, () => {
   console.log(`app is listening on port ${PORT}`);
 });
 
@@ -79,3 +79,5 @@ process.on("unhandledRejection", (err) => {
     process.exit(1);
   });
 });
+
+export default server;
