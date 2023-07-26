@@ -1,6 +1,5 @@
-import request from "supertest";
 import session from "supertest-session";
-import server from "../../server.js";
+import server from "../../app.js";
 
 let req;
 
@@ -16,6 +15,7 @@ beforeAll(async () => {
 
 afterAll(async () => {
   await session(server).delete("/api/v1/user/deleteAll");
+  await server.close();
 });
 
 beforeEach(async () => {
@@ -31,7 +31,7 @@ afterEach(async () => {
 });
 
 describe("task resource", () => {
-  describe("POST create", () => {
+  describe("POST /task", () => {
     it("should return 201 created", async () => {
       const res = await req.post("/api/v1/task").send({
         name: "task1",
@@ -41,7 +41,7 @@ describe("task resource", () => {
     });
   });
 
-  describe("PATCH update", () => {
+  describe("PATCH /task", () => {
     it("should return 200 ok", async () => {
       const task = await req.post("/api/v1/task").send({
         name: "task1",
@@ -57,7 +57,7 @@ describe("task resource", () => {
     });
   });
 
-  describe("get getAll", () => {
+  describe("get /task", () => {
     it("should return 200 ok", async () => {
       const task1 = await req.post("/api/v1/task").send({
         name: "task1",
@@ -74,7 +74,7 @@ describe("task resource", () => {
     });
   });
 
-  describe("DELETE a task", () => {
+  describe("DELETE /task", () => {
     it("should return 204 no content", async () => {
       const task1 = await req.post("/api/v1/task").send({
         name: "task1",
@@ -86,7 +86,7 @@ describe("task resource", () => {
     });
   });
 
-  describe("DELETE all tasks", () => {
+  describe("DELETE /task/deleteAll", () => {
     it("should return 200", async () => {
       await req.post("/api/v1/task").send({
         name: "task1",
