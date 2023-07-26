@@ -10,6 +10,8 @@
     "dev": "nodemon server.js",
     "devDB:create": "npx db-migrate db:create task_manager_dev",
     "devDB:drop": "npx db-migrate db:drop task_manager_dev",
+    "testDB:create": "npx db-migrate db:create task_manager_test",
+    "testDB:drop": "npx db-migrate db:drop task_manager_test",
     "__comment__": "to run `migration:run` script modify `type` from `module` to `commonjs`",
     "migration:run": "npx db-migrate up"
   },
@@ -38,6 +40,8 @@
     "redis": "^4.6.7"
   },
   "devDependencies": {
-    "morgan": "^1.10.0"
+    "jest": "^29.6.1",
+    "morgan": "^1.10.0",
+    "supertest": "^6.3.3"
   }
 }
