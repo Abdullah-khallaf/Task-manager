@@ -1,10 +1,3 @@
-// handling uncaught exceptions
-process.on("uncaughtException", (err) => {
-  console.log(`name: ${err.name}, message: ${err.message}`);
-  console.log("uncaughtException, shutting down");
-  process.exit(1);
-});
-
 import express from "express";
 import config from "./config/config.js";
 import morgan from "morgan";

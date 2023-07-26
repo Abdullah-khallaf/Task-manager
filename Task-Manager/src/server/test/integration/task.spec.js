@@ -15,7 +15,6 @@ beforeAll(async () => {
 
 afterAll(async () => {
   await session(server).delete("/api/v1/user/deleteAll");
-  await server.close();
 });
 
 beforeEach(async () => {
