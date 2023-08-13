@@ -12,7 +12,6 @@
     "devDB:drop": "npx db-migrate db:drop task_manager_dev",
     "testDB:create": "npx db-migrate db:create task_manager_test",
     "testDB:drop": "npx db-migrate db:drop task_manager_test",
-    "__comment__": "to run `migration:run` script modify `type` from `module` to `commonjs`",
     "migration:run": "npx db-migrate up"
   },
   "repository": {
@@ -37,6 +36,7 @@
     "express": "^4.18.2",
     "express-session": "^1.17.3",
     "mysql2": "^3.5.2",
+    "nodemon": "^3.0.1",
     "redis": "^4.6.7"
   },
   "devDependencies": {

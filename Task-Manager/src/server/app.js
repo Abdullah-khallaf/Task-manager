@@ -12,8 +12,7 @@ const app = express();
 
 //config redis
 const redisClient = createClient({
-  HOST: config.REDIS_HOST,
-  PORT: config.REDIS_PORT,
+  url: `redis://${config.REDIS_HOST}:${config.REDIS_PORT}`
 });
 
 await redisClient
