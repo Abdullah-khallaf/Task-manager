@@ -9,8 +9,8 @@ process.on("uncaughtException", (err) => {
 });
 
 //start server
-const PORT = config.PORT || 8080;
-app.listen(8080, () => {
+const PORT = config.PORT || 9090;
+app.listen(PORT, () => {
   console.log(`app is listening on port ${PORT}`);
 });
 
