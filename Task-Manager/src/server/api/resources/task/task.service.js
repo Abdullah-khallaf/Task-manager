@@ -70,3 +70,21 @@ export const deleteTask = async ({ id }, userId) => {
 
   return affectedRows;
 };
+
+export const check = async ({ id }, userId) => {
+  const db = await connect();
+  const sql = `
+    update tasks
+    set
+      complete = if(complete=0, 1, 0)
+    where id = ? and user_id = ?
+  `;
+  await db.query(sql, [id, userId]);
+
+  const [[task]] = await db.query(
+    `select complete from tasks where id = ? and user_id = ?`,
+    [id, userId]
+  );
+
+  return task.complete == 1 ? `Finished` : `Unfinished`;
+};

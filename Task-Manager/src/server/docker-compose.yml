@@ -2,7 +2,7 @@ version: '3.8'
 services:
   task-manager:
     container_name: task-manager-container
-    image: task-manager-img
+    image: iamha4emtarek/task-manager
     build: .
     ports:
       - 9090:9090
@@ -19,8 +19,6 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
-      MYSQL_USER: ${DB_USER}
-      MYSQL_PASSWORD: ${DB_PASSWORD}
       MYSQL_DATABASE: ${DB_NAME}
     volumes:
       - task-manager-vol:/var/lib/mysql

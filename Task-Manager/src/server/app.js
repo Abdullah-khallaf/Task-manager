@@ -27,7 +27,7 @@ await redisClient
 const cookieConfig = {
   secure: false,
   httpOnly: true,
-  maxAge: 1000 * 60 * 5, // 5min
+  maxAge: 1000 * 60 * 60, // 60min
 };
 if (config.env === "prod") {
   cookieConfig.secure = true;
