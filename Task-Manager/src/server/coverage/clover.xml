@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1690383266414" clover="3.2.0">
+  <project timestamp="1690383266415" name="All files">
+    <metrics statements="155" coveredstatements="133" conditionals="49" coveredconditionals="33" methods="34" coveredmethods="28" elements="238" coveredelements="194" complexity="0" loc="155" ncloc="155" packages="8" files="14" classes="14"/>
+    <package name="server">
+      <metrics statements="16" coveredstatements="12" conditionals="6" coveredconditionals="4" methods="3" coveredmethods="1"/>
+      <file name="app.js" path="/home/hashem/myworkspace/projects/TTT/Task-manager/Task-Manager/src/server/app.js">
+        <metrics statements="16" coveredstatements="12" conditionals="6" coveredconditionals="4" methods="3" coveredmethods="1"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="14" count="2" type="stmt"/>
+        <line num="19" count="2" type="stmt"/>
+        <line num="22" count="2" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="28" count="2" type="stmt"/>
+        <line num="33" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="38" count="2" type="stmt"/>
+        <line num="39" count="2" type="stmt"/>
+        <line num="48" count="2" type="cond" truecount="3" falsecount="1"/>
+        <line num="49" count="0" type="stmt"/>
+        <line num="53" count="2" type="stmt"/>
+        <line num="54" count="2" type="stmt"/>
+        <line num="55" count="0" type="stmt"/>
+        <line num="59" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="server.api">
+      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="api.routes.js" path="/home/hashem/myworkspace/projects/TTT/Task-manager/Task-Manager/src/server/api/api.routes.js">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="server.api.database">
+      <metrics statements="13" coveredstatements="12" conditionals="6" coveredconditionals="4" methods="3" coveredmethods="3"/>
+      <file name="index.js" path="/home/hashem/myworkspace/projects/TTT/Task-manager/Task-Manager/src/server/api/database/index.js">
+        <metrics statements="13" coveredstatements="12" conditionals="6" coveredconditionals="4" methods="3" coveredmethods="3"/>
+        <line num="6" count="39" type="cond" truecount="2" falsecount="0"/>
+        <line num="7" count="37" type="stmt"/>
+        <line num="11" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="13" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="14" count="2" type="stmt"/>
+        <line num="17" count="2" type="stmt"/>
+        <line num="24" count="2" type="stmt"/>
+        <line num="26" count="2" type="stmt"/>
+        <line num="27" count="2" type="stmt"/>
+        <line num="29" count="2" type="stmt"/>
+        <line num="30" count="39" type="stmt"/>
+        <line num="33" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="server.api.resources.task">
+      <metrics statements="46" coveredstatements="45" conditionals="2" coveredconditionals="1" methods="10" coveredmethods="10"/>
+      <file name="task.controller.js" path="/home/hashem/myworkspace/projects/TTT/Task-manager/Task-Manager/src/server/api/resources/task/task.controller.js">
+        <metrics statements="15" coveredstatements="15" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="5"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="5" count="7" type="stmt"/>
+        <line num="7" count="7" type="stmt"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="26" count="2" type="stmt"/>
+        <line num="27" count="6" type="stmt"/>
+        <line num="29" count="6" type="stmt"/>
+        <line num="35" count="2" type="stmt"/>
+        <line num="36" count="1" type="stmt"/>
+        <line num="38" count="1" type="stmt"/>
+        <line num="44" count="2" type="stmt"/>
+        <line num="45" count="1" type="stmt"/>
+        <line num="50" count="1" type="stmt"/>
+      </file>
+      <file name="task.routes.js" path="/home/hashem/myworkspace/projects/TTT/Task-manager/Task-Manager/src/server/api/resources/task/task.routes.js">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="14" count="2" type="stmt"/>
+        <line num="15" count="2" type="stmt"/>
+      </file>
+      <file name="task.service.js" path="/home/hashem/myworkspace/projects/TTT/Task-manager/Task-Manager/src/server/api/resources/task/task.service.js">
+        <metrics statements="27" coveredstatements="26" conditionals="2" coveredconditionals="1" methods="5" coveredmethods="5"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="5" count="7" type="cond" truecount="1" falsecount="1"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="9" count="7" type="stmt"/>
+        <line num="10" count="7" type="stmt"/>
+        <line num="14" count="7" type="stmt"/>
+        <line num="15" count="7" type="stmt"/>
+        <line num="21" count="2" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="28" count="1" type="stmt"/>
+        <line num="30" count="1" type="stmt"/>
+        <line num="33" count="2" type="stmt"/>
+        <line num="34" count="6" type="stmt"/>
+        <line num="35" count="6" type="stmt"/>
+        <line num="40" count="6" type="stmt"/>
+        <line num="41" count="6" type="stmt"/>
+        <line num="48" count="2" type="stmt"/>
+        <line num="49" count="1" type="stmt"/>
+        <line num="50" count="1" type="stmt"/>
+        <line num="57" count="1" type="stmt"/>
+        <line num="59" count="1" type="stmt"/>
+        <line num="62" count="2" type="stmt"/>
+        <line num="63" count="1" type="stmt"/>
+        <line num="64" count="1" type="stmt"/>
+        <line num="69" count="1" type="stmt"/>
+        <line num="71" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="server.api.resources.user">
+      <metrics statements="60" coveredstatements="49" conditionals="21" coveredconditionals="18" methods="13" coveredmethods="9"/>
+      <file name="user.controller.js" path="/home/hashem/myworkspace/projects/TTT/Task-manager/Task-Manager/src/server/api/resources/user/user.controller.js">
+        <metrics statements="18" coveredstatements="16" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="4"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="17" count="2" type="stmt"/>
+        <line num="18" count="8" type="stmt"/>
+        <line num="19" count="8" type="stmt"/>
+        <line num="20" count="8" type="stmt"/>
+        <line num="21" count="8" type="stmt"/>
+        <line num="27" count="2" type="stmt"/>
+        <line num="28" count="7" type="stmt"/>
+        <line num="30" count="6" type="stmt"/>
+        <line num="38" count="2" type="stmt"/>
+        <line num="39" count="10" type="stmt"/>
+        <line num="40" count="7" type="stmt"/>
+        <line num="42" count="7" type="stmt"/>
+        <line num="50" count="2" type="stmt"/>
+        <line num="51" count="1" type="stmt"/>
+        <line num="53" count="1" type="stmt"/>
+      </file>
+      <file name="user.middleware.js" path="/home/hashem/myworkspace/projects/TTT/Task-manager/Task-Manager/src/server/api/resources/user/user.middleware.js">
+        <metrics statements="9" coveredstatements="4" conditionals="6" coveredconditionals="3" methods="3" coveredmethods="1"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="4" count="16" type="cond" truecount="3" falsecount="1"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="9" count="16" type="stmt"/>
+        <line num="12" count="2" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="14" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+      </file>
+      <file name="user.routes.js" path="/home/hashem/myworkspace/projects/TTT/Task-manager/Task-Manager/src/server/api/resources/user/user.routes.js">
+        <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="10" count="2" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="12" count="2" type="stmt"/>
+      </file>
+      <file name="user.service.js" path="/home/hashem/myworkspace/projects/TTT/Task-manager/Task-Manager/src/server/api/resources/user/user.service.js">
+        <metrics statements="27" coveredstatements="23" conditionals="15" coveredconditionals="15" methods="5" coveredmethods="4"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="6" count="6" type="stmt"/>
+        <line num="7" count="6" type="stmt"/>
+        <line num="8" count="6" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="12" count="8" type="stmt"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="25" count="2" type="stmt"/>
+        <line num="32" count="7" type="cond" truecount="7" falsecount="0"/>
+        <line num="33" count="1" type="stmt"/>
+        <line num="36" count="6" type="stmt"/>
+        <line num="37" count="6" type="stmt"/>
+        <line num="42" count="6" type="stmt"/>
+        <line num="50" count="6" type="stmt"/>
+        <line num="53" count="2" type="stmt"/>
+        <line num="54" count="10" type="cond" truecount="4" falsecount="0"/>
+        <line num="55" count="1" type="stmt"/>
+        <line num="58" count="9" type="stmt"/>
+        <line num="59" count="9" type="stmt"/>
+        <line num="64" count="9" type="stmt"/>
+        <line num="66" count="9" type="cond" truecount="4" falsecount="0"/>
+        <line num="67" count="2" type="stmt"/>
+        <line num="71" count="7" type="stmt"/>
+      </file>
+    </package>
+    <package name="server.config">
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="config.js" path="/home/hashem/myworkspace/projects/TTT/Task-manager/Task-Manager/src/server/config/config.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="17" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="server.middleware">
+      <metrics statements="9" coveredstatements="4" conditionals="12" coveredconditionals="5" methods="1" coveredmethods="1"/>
+      <file name="globalErrorHandler.js" path="/home/hashem/myworkspace/projects/TTT/Task-manager/Task-Manager/src/server/middleware/globalErrorHandler.js">
+        <metrics statements="9" coveredstatements="4" conditionals="12" coveredconditionals="5" methods="1" coveredmethods="1"/>
+        <line num="4" count="4" type="cond" truecount="1" falsecount="1"/>
+        <line num="5" count="4" type="cond" truecount="1" falsecount="1"/>
+        <line num="7" count="4" type="cond" truecount="3" falsecount="1"/>
+        <line num="8" count="4" type="stmt"/>
+        <line num="13" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="14" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="server.utils">
+      <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="1" methods="4" coveredmethods="4"/>
+      <file name="appError.js" path="/home/hashem/myworkspace/projects/TTT/Task-manager/Task-Manager/src/server/utils/appError.js">
+        <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <line num="3" count="4" type="stmt"/>
+        <line num="4" count="4" type="stmt"/>
+        <line num="5" count="4" type="cond" truecount="1" falsecount="1"/>
+        <line num="6" count="4" type="stmt"/>
+      </file>
+      <file name="catchAsync.js" path="/home/hashem/myworkspace/projects/TTT/Task-manager/Task-Manager/src/server/utils/catchAsync.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+        <line num="2" count="20" type="stmt"/>
+        <line num="3" count="42" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>

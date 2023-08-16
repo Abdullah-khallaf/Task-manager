@@ -53,3 +53,12 @@ export const deleteTask = catchAsync(async (req, res, next) => {
     //  message: `${affectedRows} task is deleted`,
   });
 });
+
+export const check = catchAsync(async (req, res, next) => {
+  const message = await taskService.check(req.body, req.session.user.id);
+
+  res.status(200).json({
+    status: "success",
+    message,
+  });
+});

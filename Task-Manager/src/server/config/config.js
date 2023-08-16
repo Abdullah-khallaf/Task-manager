@@ -13,6 +13,7 @@ const {
   REDIS_HOST,
   REDIS_PORT,
   SESSION_SECRET,
+  TEST_DB_NAME,
 } = process.env;
 
 export default {
@@ -26,4 +27,5 @@ export default {
   REDIS_HOST,
   REDIS_PORT,
   SESSION_SECRET,
+  TEST_DB_NAME,
 };
