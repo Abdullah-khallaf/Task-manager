@@ -1,23 +1,32 @@
-<script setup>
-
-</script>
-
 <template>
-  <div>
+  <div class="App">
     <h1>
-      This App Is Underconstruction. 
+      Todo list 
     </h1>
+    <SideBar/>
   </div>
 </template>
 
+
+<script setup>
+import SideBar from './components/SideBar.vue'
+ //import Home from './views/Home.vue';
+
+  
+</script>
+
+
+
 <style scoped>
   h1{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
+    align-items: center;
     font-family: 'Poppins', sans-serif;
     font-size: 48px;
     font-weight: bold;
     }
-</style>
+    .App{
+      padding: 20px;
+      background-color: red;
+    }
+
+</style> 
