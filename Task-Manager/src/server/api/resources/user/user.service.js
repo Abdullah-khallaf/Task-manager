@@ -73,7 +73,7 @@ export const login = async ({ email, password }) => {
 
   const db = await connect();
   const sql = `
-    select id, email, user_name, first_name, last_name, password 
+    select id, email, username, first_name, last_name, password 
     from users
     where email = ?
   `;

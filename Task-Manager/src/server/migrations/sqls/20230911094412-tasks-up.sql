@@ -4,8 +4,9 @@ create table if not exists tasks(
     name varchar(50) not null,
     description varchar(255),
     category varchar(50),
-    next_repetition timestamp,
+    next_repetition bigint unsigned,
     num_of_repetitions tinyint default 0 not null,
+    status enum('inProgress', 'completed') default 'inProgress'
     user_id int,
     foreign key(user_id) 
     references users(id)
