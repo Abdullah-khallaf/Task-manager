@@ -10,5 +10,5 @@ create table if not exists users(
     password_confirm varchar(255) not null,
     role enum('user', 'admin') default 'user' not null,
     active boolean default true,
-    createdAt date not null
-);
+    createdAt timestamp default current_timestamp
+);  

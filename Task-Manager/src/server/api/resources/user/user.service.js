@@ -24,30 +24,46 @@ export const getAllUsers = async () => {
 
 export const signup = async ({
   email,
-  user_name,
+  username,
   first_name,
   last_name,
+  date_of_birth,
   password,
 }) => {
-  if (!email || !user_name || !first_name || !last_name || !password) {
+  if (
+    !email ||
+    !username ||
+    !first_name ||
+    !last_name ||
+    !date_of_birth ||
+    !password
+  ) {
     throw new AppError("please provide your information", 400);
   }
 
   const db = await connect();
   const sql = `
-    insert into users(email, user_name, first_name, last_name, password)
-    values (?, ?, ?, ?, ?)
+    insert into users(email, username, first_name, last_name, date_of_birth, password)
+    values (?, ?, ?, ?, ?, ?)
   `;
 
   const [{ insertId }] = await db.query(sql, [
     email,
-    user_name,
+    username,
     first_name,
     last_name,
+    date_of_birth,
     await hash(password),
   ]);
 
-  return { id: insertId, email, user_name, first_name, last_name };
+  return {
+    id: insertId,
+    email,
+    username,
+    first_name,
+    last_name,
+    date_of_birth,
+  };
 };
 
 export const login = async ({ email, password }) => {
