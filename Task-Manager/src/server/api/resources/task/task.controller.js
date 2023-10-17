@@ -23,6 +23,17 @@ export const getAll = catchAsync(async (req, res, next) => {
   });
 });
 
+export const getTodayTasks = catchAsync(async (req, res, next) => {
+  const tasks = await taskService.getTodayTasks(req.session.id);
+
+  res.status(200).json({
+    status: "success",
+    data: {
+      tasks,
+    },
+  });
+});
+
 export const deleteAll = catchAsync(async (req, res, next) => {
   const NumOfDeletedTasks = await taskService.deleteAll(req.session.user.id);
 

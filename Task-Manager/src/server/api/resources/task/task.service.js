@@ -39,6 +39,19 @@ export const getAll = async (userId) => {
   return tasks;
 };
 
+export const getTodayTasks = async (userId) => {
+  const db = await connect();
+  const sql = `
+    select *
+    from tasks
+    where user_id = ? and next_repetition = ?
+  `;
+  const [tasks] = await db.query(sql, [userId, moment().startOf("day").unix()]);
+  
+  console.log(tasks.length);
+  return tasks;
+};
+
 export const deleteAll = async (userId) => {
   const db = await connect();
   const sql = `
