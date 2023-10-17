@@ -81,28 +81,10 @@ export const deleteTask = async ({ id }, userId) => {
   return affectedRows;
 };
 
-// export const check = async ({ id }, userId) => {
-//   const db = await connect();
-//   const sql = `
-//     update tasks
-//     set
-//       complete = if(complete=0, 1, 0)
-//     where id = ? and user_id = ?
-//   `;
-//   await db.query(sql, [id, userId]);
-
-//   const [[task]] = await db.query(
-//     `select complete from tasks where id = ? and user_id = ?`,
-//     [id, userId]
-//   );
-
-//   return task.complete == 1 ? `Finished` : `Unfinished`;
-// };
-
 export const check = async ({ id }, userId) => {
   const db = await connect();
   let sql = `
-    select num_of_repetitions 
+    select num_of_repetitions
     from tasks
     where id = ? and user_id = ?
   `;
@@ -111,35 +93,39 @@ export const check = async ({ id }, userId) => {
     userId,
   ]);
 
-  let nextRepetition;
-  let status = 'inProgress'
-
+  let nextRepetition = null;
+  let status = "notStarted";
   if (numOfRepetions == 0) {
-    nextRepetition = moment().startOf("day").add(1, "day").unix();
+    nextRepetition = moment().startOf("day").add(1, "day").unix(); //unix -> sec since the epoch
+    status = "inProgress";
+    numOfRepetions += 1;
   } else if (numOfRepetions == 1) {
     nextRepetition = moment().startOf("day").add(7, "day").unix();
-  } else if (nextRepetition == 2) {
+    status = "inProgress";
+    numOfRepetions += 1;
+  } else if (numOfRepetions == 2) {
     nextRepetition = moment().startOf("day").add(16, "day").unix();
-  } else if (nextRepetition == 3) {
+    status = "inProgress";
+    numOfRepetions += 1;
+  } else if (numOfRepetions == 3) {
     nextRepetition = moment().startOf("day").add(35, "day").unix();
-  }else if (nextRepetition >= 4) {
-    
+    status = "inProgress";
+    numOfRepetions += 1;
+  } else {
+    nextRepetition = null;
+    status = "completed";
   }
-  numOfRepetions += 1;
 
-  if(numOfRepetions == 4) {
-    sql = `
-    update tasks
-    set next_repetition =  ?,
-        num_of_repetitions = ?
-    where id = ? and user_id = ?
-  `;
-  }
   sql = `
     update tasks
     set next_repetition =  ?,
-        num_of_repetitions = ?
+        num_of_repetitions = ?,
+        status = ?
     where id = ? and user_id = ?
   `;
-  await db.query(sql, [nextRepetition, numOfRepetions, id, userId]);
+  await db.query(sql, [nextRepetition, numOfRepetions, status, id, userId]);
+
+  return status == "inProgress"
+    ? `your next repetition data is ${moment(nextRepetition * 1000)}`
+    : "this task is already completed";
 };

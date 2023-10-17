@@ -6,7 +6,7 @@ create table if not exists tasks(
     category varchar(50),
     next_repetition bigint unsigned,
     num_of_repetitions tinyint default 0 not null,
-    status enum('inProgress', 'completed') default 'inProgress'
+    status enum('notStarted','inProgress', 'completed') default 'inProgress'
     user_id int,
     foreign key(user_id) 
     references users(id)
