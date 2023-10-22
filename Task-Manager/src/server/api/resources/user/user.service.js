@@ -1,6 +1,8 @@
 import connect from "../../database/index.js";
 import AppError from "../../../utils/appError.js";
 import bcrypt from "bcryptjs";
+import crypto from 'crypto'
+import { log } from "console";
 
 const hash = async (plainPassword) => {
   const salt = await bcrypt.genSalt();
@@ -92,3 +94,40 @@ export const login = async ({ email, password }) => {
     last_name: user.last_name,
   };
 };
+
+export const forgotPassword = async ({email}) => {
+  if (!email) {
+    throw new AppError('please provide your email', 400)
+  }
+
+  const db = await connect();
+  let sql = `
+    select id 
+    from users
+    where email =  ?
+  `
+  const [user] = await db.query(sql, [email]);
+  console.log(user);
+  console.log(typeof user);
+
+  if(user.length == 0) {
+    throw new AppError('there is not user attached with that email', 401)
+  }
+
+  const resetToken = crypto.randomBytes(32).toString('hex');
+  const passwordResetToken = crypto.createHash('sha256').update(resetToken).digest('hex');
+  const passwordResetExpire = Date.now() + 10 * 60 * 1000; //10min
+  console.log(resetToken);
+  console.log(passwordResetToken);
+
+  sql = `
+    update users
+    set 
+      password_reset_token = ?,
+      password_reset_expire = ?
+    where email = ?
+  `
+  await db.query(sql, [email]);
+
+  
+}
