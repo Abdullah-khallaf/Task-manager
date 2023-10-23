@@ -11,5 +11,5 @@ create table if not exists users(
     active boolean default true,
     createdAt timestamp default current_timestamp,
     password_reset_token varchar(255),
-    password_reset_expire timestamp
+    password_reset_expire  BIGINT UNSIGNED
 );  

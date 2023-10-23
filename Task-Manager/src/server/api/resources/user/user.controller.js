@@ -48,13 +48,19 @@ export const login = catchAsync(async (req, res, next) => {
 });
 
 export const logout = catchAsync(async (req, res, next) => {
-  req.session.destroy()
+  req.session.destroy();
 
   res.status(200).json({
-      status: 'success',
-      message: 'you are logged out '
-  })
-})
+    status: "success",
+    message: "you are logged out ",
+  });
+});
 
+export const forgotPassword = catchAsync(async (req, res, next) => {
+  await userService.forgotPassword(req, req.body);
 
-
+  res.status(200).json({
+    status: "success",
+    message: "reset token is sent to your email",
+  });
+});

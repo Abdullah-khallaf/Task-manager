@@ -14,6 +14,8 @@ const {
   REDIS_PORT,
   SESSION_SECRET,
   TEST_DB_NAME,
+  EMAIL_USERNAME,
+  EMAIL_PASSWORD,
 } = process.env;
 
 export default {
@@ -28,4 +30,6 @@ export default {
   REDIS_PORT,
   SESSION_SECRET,
   TEST_DB_NAME,
+  EMAIL_USERNAME,
+  EMAIL_PASSWORD,
 };

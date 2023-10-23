@@ -1,7 +1,8 @@
 import connect from "../../database/index.js";
 import AppError from "../../../utils/appError.js";
 import bcrypt from "bcryptjs";
-import crypto from 'crypto'
+import crypto from "crypto";
+import sendEmail from "../../../utils/sendEmail.js";
 import { log } from "console";
 
 const hash = async (plainPassword) => {
@@ -95,9 +96,9 @@ export const login = async ({ email, password }) => {
   };
 };
 
-export const forgotPassword = async ({email}) => {
+export const forgotPassword = async (req, { email }) => {
   if (!email) {
-    throw new AppError('please provide your email', 400)
+    throw new AppError("please provide your email", 400);
   }
 
   const db = await connect();
@@ -105,20 +106,19 @@ export const forgotPassword = async ({email}) => {
     select id 
     from users
     where email =  ?
-  `
+  `;
   const [user] = await db.query(sql, [email]);
-  console.log(user);
-  console.log(typeof user);
 
-  if(user.length == 0) {
-    throw new AppError('there is not user attached with that email', 401)
+  if (user.length == 0) {
+    throw new AppError("there is no user attached with that email", 404);
   }
 
-  const resetToken = crypto.randomBytes(32).toString('hex');
-  const passwordResetToken = crypto.createHash('sha256').update(resetToken).digest('hex');
+  const resetToken = crypto.randomBytes(32).toString("hex");
+  const passwordResetToken = crypto
+    .createHash("sha256")
+    .update(resetToken)
+    .digest("hex");
   const passwordResetExpire = Date.now() + 10 * 60 * 1000; //10min
-  console.log(resetToken);
-  console.log(passwordResetToken);
 
   sql = `
     update users
@@ -126,8 +126,22 @@ export const forgotPassword = async ({email}) => {
       password_reset_token = ?,
       password_reset_expire = ?
     where email = ?
-  `
-  await db.query(sql, [email]);
+  `;
+  await db.query(sql, [passwordResetToken, passwordResetExpire, email]);
 
-  
-}
+  const resetUrl = `${req.protocol}://${req.get(
+    "host"
+  )}/api/v1/user/resetPassword/${resetToken}`;
+  const emailOptions = {
+    email,
+    subject: "your password reset token (valid for 10 min)",
+    message: `send a patch request with your new password to ${resetUrl} \n if your didn't forget your password, please ignore this email`,
+  };
+
+  try {
+    await sendEmail(emailOptions);
+  } catch (err) {
+    throw new AppError('failed to send a reset token please try', 500)
+  }
+  return;
+};
