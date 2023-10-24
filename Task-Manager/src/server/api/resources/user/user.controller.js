@@ -14,15 +14,7 @@ export const getAllUsers = catchAsync(async (req, res, next) => {
   });
 });
 
-export const deleteAll = catchAsync(async (req, res, next) => {
-  const db = await connect();
-  const sql = `delete from users`;
-  await db.query(sql);
-  res.status(200).json({
-    status: "success",
-    message: "users table is clear",
-  });
-});
+
 
 export const signup = catchAsync(async (req, res, next) => {
   const user = await userService.signup(req.body);
@@ -66,10 +58,7 @@ export const forgotPassword = catchAsync(async (req, res, next) => {
 });
 
 export const resetPassword = catchAsync(async (req, res, next) => {
-   await userService.resetPassword(
-    req.params.token,
-    req.body
-  );
+  await userService.resetPassword(req.params.token, req.body);
 
   res.status(200).json({
     status: "success",
