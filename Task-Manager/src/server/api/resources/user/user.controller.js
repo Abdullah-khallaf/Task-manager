@@ -64,3 +64,15 @@ export const forgotPassword = catchAsync(async (req, res, next) => {
     message: "reset token is sent to your email",
   });
 });
+
+export const resetPassword = catchAsync(async (req, res, next) => {
+   await userService.resetPassword(
+    req.params.token,
+    req.body
+  );
+
+  res.status(200).json({
+    status: "success",
+    message: "password updated successfully",
+  });
+});

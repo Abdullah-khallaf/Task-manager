@@ -3,7 +3,6 @@ import AppError from "../../../utils/appError.js";
 import bcrypt from "bcryptjs";
 import crypto from "crypto";
 import sendEmail from "../../../utils/sendEmail.js";
-import { log } from "console";
 
 const hash = async (plainPassword) => {
   const salt = await bcrypt.genSalt();
@@ -135,13 +134,47 @@ export const forgotPassword = async (req, { email }) => {
   const emailOptions = {
     email,
     subject: "your password reset token (valid for 10 min)",
-    message: `send a patch request with your new password to ${resetUrl} \n if your didn't forget your password, please ignore this email`,
+    message: `send a patch request with your new password to ${resetUrl} \n if you didn't forget your password, please ignore this email`,
   };
 
   try {
     await sendEmail(emailOptions);
   } catch (err) {
-    throw new AppError('failed to send a reset token please try', 500)
+    throw new AppError("failed to send a reset token please try", 500);
   }
   return;
+};
+
+export const resetPassword = async (resetToken, { newPassword }) => {
+  const hashedToken = crypto
+    .createHash("sha256")
+    .update(resetToken)
+    .digest("hex");
+
+  const db = await connect();
+  let sql = `
+    select id,  password_reset_expire
+    from users
+    where password_reset_token = ?
+  `;
+  const [user] = await db.query(sql, [hashedToken]);
+  if (user.length == 0) {
+    throw new AppError("invalid token", 401);
+  }
+  const [{ id, password_reset_expire }] = user;
+  if (password_reset_expire < Date.now()) {
+    throw new AppError("invalid token", 401);
+  }
+
+  sql = `
+    update users
+    set
+      password = ?,
+      password_reset_token = NULL,
+      password_reset_expire = NULL
+    where id = ? 
+  `;
+  const [{ affectedRows }] = await db.query(sql, [await hash(newPassword), id]);
+
+  return affectedRows;
 };
