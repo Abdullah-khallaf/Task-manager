@@ -9,12 +9,20 @@ export const getAllUsers = catchAsync(async (req, res, next) => {
   res.status(200).json({
     status: "success",
     data: {
+      length: users.length,
       users,
     },
   });
 });
 
+export const deleteUser = catchAsync(async (req, res, next) => {
+  await userService.deleteUser(req.params.userId);
 
+  res.status(200).json({
+    status: "success",
+    data: null,
+  });
+});
 
 export const signup = catchAsync(async (req, res, next) => {
   const user = await userService.signup(req.body);

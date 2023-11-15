@@ -19,9 +19,23 @@ export const getAllUsers = async () => {
 
   const sql = `
     select * from users
+    where active = ?
 `;
-  const [rows] = await db.query(sql);
+  const [rows] = await db.query(sql, [1]);
   return rows;
+};
+
+export const deleteUser = async (userId) => {
+  const db = await connect();
+
+  const sql = `
+    update users
+    set 
+      active = ?
+    where id = ?
+  `;
+  await db.query(sql, [0, userId]);
+  return;
 };
 
 export const signup = async ({

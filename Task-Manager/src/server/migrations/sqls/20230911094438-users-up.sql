@@ -2,7 +2,7 @@
 create table if not exists users(
     id int auto_increment primary key,
     email varchar(50) unique,
-    username varchar(50) not null,
+    username varchar(50) not null unique,
     first_name varchar(50) not null,
     last_name varchar(50) not null,
     date_of_birth date not null,

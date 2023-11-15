@@ -58,7 +58,7 @@ export const deleteTask = catchAsync(async (req, res, next) => {
     req.session.user.id
   );
 
-  res.status(204).json({
+  res.status(200).json({
     status: "success",
     data: null,
     //  message: `${affectedRows} task is deleted`,
