@@ -24,6 +24,18 @@ export const deleteUser = catchAsync(async (req, res, next) => {
   });
 });
 
+export const updateUserRole = catchAsync(async (req, res, next) => {
+  const affectedRows = await userService.updateUserRole(
+    req.params.userId,
+    req.body
+  );
+
+  res.status(200).json({
+    status: "success",
+    message: `${affectedRows} user is updated`,
+  });
+});
+
 export const signup = catchAsync(async (req, res, next) => {
   const user = await userService.signup(req.body);
 

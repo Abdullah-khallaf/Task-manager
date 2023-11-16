@@ -7,19 +7,26 @@ import {
   forgotPassword,
   resetPassword,
   deleteUser,
+  updateUserRole,
 } from "./user.controller.js";
 import { isLoggedIn, restrictTo } from "./user.middleware.js";
 
 const router = new Router();
 
-router.route("/").get(isLoggedIn, restrictTo("admin"), getAllUsers);
-router.route("/:userId").delete(isLoggedIn, restrictTo("admin"), deleteUser);
-
 router.route("/signup").post(signup);
 router.route("/login").post(login);
-router.use(isLoggedIn);
-router.route("/logout").get(logout);
 router.route("/forgotPassword").post(forgotPassword);
 router.route("/resetPassword/:token").patch(resetPassword);
+
+router.use(isLoggedIn); //protect all routes below this line
+
+//updateMe, deleteMe
+router.route("/logout").get(logout);
+
+router.use(restrictTo("admin")); // admin
+
+router.route("/").get(getAllUsers);
+
+router.route("/:userId").delete(deleteUser).patch(updateUserRole);
 
 export default router;

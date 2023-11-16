@@ -38,6 +38,20 @@ export const deleteUser = async (userId) => {
   return;
 };
 
+export const updateUserRole = async (userId, { role }) => {
+  const db = await connect();
+  const sql = `
+    update users
+    set
+      role = ? 
+    where id = ?
+  `;
+
+  const [{ affectedRows }] = await db.query(sql, [role, userId]);
+
+  return affectedRows;
+};
+
 export const signup = async ({
   email,
   username,
