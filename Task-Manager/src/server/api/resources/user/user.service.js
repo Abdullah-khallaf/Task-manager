@@ -15,7 +15,7 @@ const verify = async (plainPassword, hashedPassword) => {
 };
 
 
-//for admin
+// for admin
 export const createUser = async ({
   email,
   username,

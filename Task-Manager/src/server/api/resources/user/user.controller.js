@@ -3,6 +3,8 @@ import AppError from "../../../utils/appError.js";
 import catchAsync from "../../../utils/catchAsync.js";
 import * as userService from "./user.service.js";
 
+
+// for admin
 export const createUser = catchAsync(async (req, res, next) => {
   const user = await userService.createUser(req.body);
 
@@ -58,6 +60,7 @@ export const updateUserRole = catchAsync(async (req, res, next) => {
   });
 });
 
+// for users 
 export const signup = catchAsync(async (req, res, next) => {
   const user = await userService.signup(req.body);
 
