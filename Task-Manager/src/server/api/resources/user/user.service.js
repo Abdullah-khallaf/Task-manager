@@ -14,6 +14,8 @@ const verify = async (plainPassword, hashedPassword) => {
   return await bcrypt.compare(plainPassword, hashedPassword);
 };
 
+
+//for admin
 export const createUser = async ({
   email,
   username,
@@ -125,6 +127,8 @@ export const updateUserRole = async (userId, { role }) => {
   return affectedRows;
 };
 
+
+// for users
 export const signup = async ({
   email,
   username,
