@@ -44,7 +44,7 @@ export const createUser = async ({
     values (?, ?, ?, ?, ?, ?, ?)
   `;
 
-  const result = await db.query(sql, [
+  const [{ insertId }] = await db.query(sql, [
     email,
     username,
     first_name,
@@ -54,8 +54,16 @@ export const createUser = async ({
     password,
   ]);
 
-  console.log(result);
-  return;
+  return {
+    id: insertId,
+    email,
+    username,
+    first_name,
+    last_name,
+    date_of_birth,
+    role,
+    password,
+  };
 };
 
 export const getAllUsers = async () => {
