@@ -14,6 +14,50 @@ const verify = async (plainPassword, hashedPassword) => {
   return await bcrypt.compare(plainPassword, hashedPassword);
 };
 
+export const createUser = async ({
+  email,
+  username,
+  first_name,
+  last_name,
+  date_of_birth,
+  role,
+  password,
+}) => {
+  if (
+    !email ||
+    !username ||
+    !first_name ||
+    !last_name ||
+    !date_of_birth ||
+    !role ||
+    !password
+  ) {
+    throw new AppError(
+      "please provide user email, username, first_name, last_name, date_of_birth, role and password",
+      400
+    );
+  }
+
+  const db = await connect();
+  const sql = `
+    insert into users(email, username,  first_name, last_name, date_of_birth, role, password)
+    values (?, ?, ?, ?, ?, ?, ?)
+  `;
+
+  const result = await db.query(sql, [
+    email,
+    username,
+    first_name,
+    last_name,
+    date_of_birth,
+    role,
+    password,
+  ]);
+
+  console.log(result);
+  return;
+};
+
 export const getAllUsers = async () => {
   const db = await connect();
 

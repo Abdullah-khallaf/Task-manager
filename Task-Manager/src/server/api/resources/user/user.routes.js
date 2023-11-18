@@ -8,6 +8,7 @@ import {
   resetPassword,
   deleteUser,
   updateUserRole,
+  createUser,
 } from "./user.controller.js";
 import { isLoggedIn, restrictTo } from "./user.middleware.js";
 
@@ -25,7 +26,7 @@ router.route("/logout").get(logout);
 
 router.use(restrictTo("admin")); // admin
 
-router.route("/").get(getAllUsers);
+router.route("/").get(getAllUsers).post(createUser);
 
 router.route("/:userId").delete(deleteUser).patch(updateUserRole);
 
