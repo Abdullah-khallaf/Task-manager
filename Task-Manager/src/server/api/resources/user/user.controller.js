@@ -14,6 +14,17 @@ export const createUser = catchAsync(async (req, res, next) => {
   });
 });
 
+export const getUser = catchAsync(async (req, res, next) => {
+  const user = await userService.getUser(req.params.userId);
+
+  res.status(200).json({
+    status: "success",
+    data: {
+      user,
+    },
+  });
+});
+
 export const getAllUsers = catchAsync(async (req, res, next) => {
   const users = await userService.getAllUsers();
 

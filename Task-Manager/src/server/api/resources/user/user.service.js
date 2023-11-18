@@ -66,6 +66,27 @@ export const createUser = async ({
   };
 };
 
+export const getUser = async (userId) => {
+  if (!userId) {
+    throw new AppError("please provide user id", 400);
+  }
+
+  const db = await connect();
+  const sql = `
+    select * 
+    from users
+    where id = ?
+  `;
+
+  const [[user]] = await db.query(sql, [userId]);
+
+  if (!user) {
+    throw new AppError("there is no user attached with that id ", 400);
+  }
+
+  return user;
+};
+
 export const getAllUsers = async () => {
   const db = await connect();
 
