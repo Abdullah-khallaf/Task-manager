@@ -6,6 +6,7 @@ import {
   update,
   deleteTask,
   check,
+  getTodayTasks,
 } from "./task.controller.js";
 import { isLoggedIn, restrictTo } from "../user/user.middleware.js";
 
@@ -15,4 +16,5 @@ router.use(isLoggedIn);
 router.route("/deleteAll").delete(deleteAll);
 router.route("/").post(create).get(getAll).patch(update).delete(deleteTask);
 router.route("/check").post(check);
+router.route("/todayTasks").get(getTodayTasks);
 export default router;

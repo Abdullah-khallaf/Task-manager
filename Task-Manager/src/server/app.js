@@ -7,12 +7,12 @@ import AppError from "./utils/appError.js";
 import session from "express-session";
 import { createClient } from "redis";
 import RedisStore from "connect-redis";
-
+import cors from "cors";
 const app = express();
 
 //config redis
 const redisClient = createClient({
-  url: `redis://${config.REDIS_HOST}:${config.REDIS_PORT}`
+  url: `redis://${config.REDIS_HOST}:${config.REDIS_PORT}`,
 });
 
 await redisClient
@@ -27,13 +27,20 @@ await redisClient
 const cookieConfig = {
   secure: false,
   httpOnly: true,
-  maxAge: 1000 * 60 * 60, // 60min
+  //maxAge: 1000 * 60 * 60, // 60min
 };
 if (config.env === "prod") {
   cookieConfig.secure = true;
 }
 
 // middleware
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+    credentials: true,
+  })
+);
 app.use(express.json());
 app.use(
   session({
@@ -57,7 +64,4 @@ app.all("*", (req, res, next) => {
 //global error handler
 app.use(globalErrorHandler);
 
-
 export default app;
-
-
