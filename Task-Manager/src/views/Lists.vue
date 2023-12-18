@@ -1,8 +1,7 @@
 <template>
-  <h1>
-    Hello from home
-
-  </h1>
+    <div>
+        <h1>Hello from Lists</h1>
+    </div>
 </template>
 
 <style scoped>

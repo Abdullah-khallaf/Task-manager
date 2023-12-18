@@ -1,86 +1,55 @@
 <template>
-  <div>
-    <h1>Login</h1>
-    <form @submit.prevent="handleSubmit">
-      <div>
-        <label for="username">Username or E-mail</label>
-        <input
-          type="text"
-          id="username"
-          v-model="username"
-          placeholder="Enter your username or e-mail"
-        />
-      </div>
-      <div>
+  <main>
+    <section class="Left-Logo">
+      <img src="../assets/K-logo.png" alt="logo for Kh app your place to make todo easy">
+    </section>
+    <section class="right-login-form">
+      <h1>Hi Let's Go Through Your Tasks</h1>
+      <form>
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" placeholder="Enter Your Email" v-model="userName">
+
         <label for="password">Password</label>
-        <input
-          type="password"
-          id="password"
-          v-model="password"
-          placeholder="Enter your password"
-        />
-      </div>
-      <button type="submit">Login</button>
-    </form>
-    <div>
-      <a href="#">Forgot Password?</a>
-      <a href="#" @click="goToSignup">Sign Up</a>
-    </div>
-  </div>
+        <input type="password" name="password" id="password" placeholder="Enter Your Password" v-model="password">
+
+        <button type="submit">Login</button>
+      </form>
+    </section>
+  </main>
 </template>
-
-
-
-
-
 
 <script>
 export default {
-  data() {
-    return {
-      username: "",
-      password: "",
-    };
-  },
-  methods: {
-    async handleSubmit() {
-      try {
-        const response = await fetch(
-          "https://your-backend-server.com/api/login",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              username: this.username,
-              password: this.password,
-            }),
-          }
-        );
-
-        if (!response.ok) {
-          throw new Error("Login failed.");
-        }
-
-        const data = await response.json();
-
-        // Assuming the backend responds with a token upon successful login
-        const token = data.token;
-
-        // Perform further actions, like storing the token in localStorage or Vuex store
-        // For now, let's just log the response for successful login
-        console.log("Login Successful!", data);
-      } catch (error) {
-        // Handle login error, display error message to the user, etc.
-        console.error("Login Failed:", error.message);
-      }
-    },
-    goToSignup() {
-      // Emit an event to the parent component or use Vue Router to navigate to the Signup view
-      // For now, let's just log the message
-      console.log("Go to Signup page");
-    },
-  },
-};
+  data(){
+    return{
+      userName:" ",
+      password:" ",
+    }
+  }
+}
 </script>
+
+<style>
+  body{
+    background-color: #FFFFFF;
+  }
+  main{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+  }
+  .left-logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:red ;
+    text-align: center;
+    width: 50%;
+  }
+  .right-login-form{
+    background-color:blue;
+    text-align: center;
+    width: 50%;
+  }
+</style>
