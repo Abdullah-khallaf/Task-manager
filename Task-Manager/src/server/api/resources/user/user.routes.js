@@ -10,6 +10,7 @@ import {
   updateUserRole,
   createUser,
   getUser,
+  getProfile,
 } from "./user.controller.js";
 import { isLoggedIn, restrictTo } from "./user.middleware.js";
 
@@ -23,6 +24,7 @@ router.route("/resetPassword/:token").patch(resetPassword);
 router.use(isLoggedIn); //protect all routes below this line
 
 //updateMe, deleteMe
+router.route("/profile").get(getProfile);
 router.route("/logout").get(logout);
 
 router.use(restrictTo("admin")); // admin
