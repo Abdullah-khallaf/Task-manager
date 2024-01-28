@@ -1,4 +1,5 @@
 import AppError from "../../../utils/appError.js";
+import catchAsync from "../../../utils/catchAsync.js";
 
 export const isLoggedIn = (req, res, next) => {
   if (!req.session || !req.session.user) {
@@ -6,6 +7,7 @@ export const isLoggedIn = (req, res, next) => {
       new AppError("you are not logged in, please login to get access", 401)
     );
   }
+
   next();
 };
 

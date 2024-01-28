@@ -3,7 +3,6 @@ import AppError from "../../../utils/appError.js";
 import catchAsync from "../../../utils/catchAsync.js";
 import * as userService from "./user.service.js";
 
-
 // for admin
 export const createUser = catchAsync(async (req, res, next) => {
   const user = await userService.createUser(req.body);
@@ -60,7 +59,7 @@ export const updateUserRole = catchAsync(async (req, res, next) => {
   });
 });
 
-// for users 
+// for users
 export const signup = catchAsync(async (req, res, next) => {
   const user = await userService.signup(req.body);
 
@@ -108,5 +107,23 @@ export const resetPassword = catchAsync(async (req, res, next) => {
   res.status(200).json({
     status: "success",
     message: "password updated successfully",
+  });
+});
+
+export const getProfile = catchAsync(async (req, res, next) => {
+  const user = req.session?.user;
+
+  if (!user) {
+    throw new AppError(
+      "you are not logged in, please login to get access",
+      401
+    );
+  }
+
+  res.status(200).json({
+    status: "success",
+    data: {
+      user,
+    },
   });
 });
