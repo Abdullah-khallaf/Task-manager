@@ -1,35 +1,16 @@
 <template>
-  <!--<div class="sidebar">
-        <div class="logo">
-        <img src="../assets/logo.png" alt="logo" />
-        </div>
-        <div class="menu">
-        <ul>
-            <li>
-            <router-link to="/">Home</router-link>
-            </li>
-            <li>
-            <router-link to="/login">Login</router-link>
-            </li>
-            <li>
-            <router-link to="/signup">Signup</router-link>
-            </li>
-        </ul>
-        </div>
-    </div>-->
-
   <nav class="navbar">
 
     <!--user info styling-->
     <div class="user-info">
-      <img class="user-image" src="../assets/person.jpg" alt="user-image" />
+      <img class="user-image" src="src/assets/person.jpg" alt="user-image" />
       <span class="user-name">User Name</span>
     </div>
 
     <!--nav items styling-->
     <ul class="nav-items">
       <li class="nav-item">
-        <router-link :to="{name: 'home', query: {id: 10},}" class="nav-link">
+        <router-link :to="{name: 'todaytasks'}" class="nav-link">
           <i class="bi bi-check-square-fill"></i
           ><span class="link-text">Today Tasks</span></router-link>
       </li>
@@ -72,11 +53,7 @@
 
 <script>
 export default {
-  computed: {
-    numberOfWords() {
-      return 10;
-    },
-  },
+  
 };
 </script>
 

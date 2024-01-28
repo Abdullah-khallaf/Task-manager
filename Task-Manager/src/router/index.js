@@ -1,6 +1,6 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 
-import Home from '../views/Home.vue'
+import TodayTasks from '../views/TodayTasks.vue'
 import Lists from '../views/Lists.vue'  
 import Habits from '../views/Habits.vue'
 import Calendar from '../views/Calendar.vue'
@@ -9,9 +9,9 @@ import SignupView from '../views/SignupView.vue'
 
 const routes = [
     {
-        path: '/home',
-        name: 'home',
-        component: Home
+        path: '/todaytasks',
+        name: 'todaytasks',
+        component: TodayTasks
     },
     {
         path: '/lists',

@@ -10,17 +10,18 @@
 
 
 <script setup>
-import SideBar from './components/SideBar.vue'
+import SideBar from './components/layout/SideBar.vue'
 </script>
 
 
 
 <style scoped>
 .App{
-  display:flex;
-  flex-direction: row;  
+  display: flex;
+  /* flex-direction: row;   */
 }
-main{
-  background-color: black;
-}
+/* side-bar{
+  width: 10rem;
+  height: 100vh;
+} */
 </style> 
